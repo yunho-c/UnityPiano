@@ -122,14 +122,14 @@ public class SongManager : MonoBehaviour
 
         if (visualizationAnchor != null)
         {
-            // Instantiate under the anchor, then set local position and rotation.
+            // instantiate at anchor, then set local position and rotation.
             newNoteObject = Instantiate(notePrefab, visualizationAnchor);
             newNoteObject.transform.localPosition = spawnPos;
             newNoteObject.transform.localRotation = Quaternion.identity;
         }
         else
         {
-            // Original behavior: instantiate at world position.
+            // Instantiate at world position
             newNoteObject = Instantiate(notePrefab, spawnPos, Quaternion.identity);
         }
 
