@@ -13,7 +13,7 @@ public class KeyboardPianoController : MonoBehaviour
     public int defaultVelocity = 100;
     public int midiChannel = 0; // QUE?
 
-    private KeyboardInput keyboardInput;
+    private GameControls gameControls;
     private InputActionMap inputActionMap;
 
     // private Dictionary<KeyCode, PianoKeyController> keyMappings = new Dictionary<KeyCode, PianoKeyController>();
@@ -23,8 +23,8 @@ public class KeyboardPianoController : MonoBehaviour
 
     void Start()
     {
-        keyboardInput = new KeyboardInput();
-        inputActionMap = keyboardInput.PianoKeys.Get();
+        gameControls = new GameControls();
+        inputActionMap = gameControls.PianoKeys.Get();
 
         // Find all PianoKeyController components
         PianoKeyController[] pianoKeys = FindObjectsByType<PianoKeyController>(FindObjectsSortMode.None);
@@ -40,7 +40,7 @@ public class KeyboardPianoController : MonoBehaviour
             // if (pianoKey.actionName != "" && !keyMappings.ContainsKey(pianoKey.mappedPCKey))
             if (!string.IsNullOrEmpty(pianoKey.actionName) && !keyMappings.ContainsKey(pianoKey.actionName))
                 {
-                InputAction action = keyboardInput.FindAction(pianoKey.actionName); // nullable
+                InputAction action = gameControls.FindAction(pianoKey.actionName); // nullable
                 if (action != null)
                 {
                     keyMappings.Add(action.name, pianoKey);
@@ -71,14 +71,14 @@ public class KeyboardPianoController : MonoBehaviour
 
     private void RegisterInputActions()
     {
-        // foreach (InputAction action in keyboardInput.PianoKeys.actions)
+        // foreach (InputAction action in gameControls.PianoKeys.actions)
         foreach (InputAction action in inputActionMap.actions)
             {
             action.started += OnPianoKeyPressed;
             action.canceled += OnPianoKeyReleased;
         }
-        // keyboardInput.PianoKeys.actions.Enable();
-        keyboardInput.PianoKeys.Enable();
+        // gameControls.PianoKeys.actions.Enable();
+        gameControls.PianoKeys.Enable();
         Debug.Log("Piano input actions registered and PianoKeys action map enabled.");
     }
 
@@ -123,10 +123,10 @@ public class KeyboardPianoController : MonoBehaviour
     void OnDisable()
     {
         // Disable action map and unregister event callbacks
-        if (keyboardInput != null)
+        if (gameControls != null)
         {
-            keyboardInput.PianoKeys.Disable();
-            // foreach (InputAction action in keyboardInput.PianoKeys.actions)
+            gameControls.PianoKeys.Disable();
+            // foreach (InputAction action in gameControls.PianoKeys.actions)
             foreach (InputAction action in inputActionMap.actions)
             {
                 action.started -= OnPianoKeyPressed;
@@ -144,59 +144,4 @@ public class KeyboardPianoController : MonoBehaviour
             activeNotes.Clear();
         }
     }
-
-
-    // NOTE: Based on InputManager
-    // void Update()
-    // {
-    //     // Iterate through all mapped keys to check their state
-    //     foreach (KeyValuePair<KeyCode, PianoKeyController> entry in keyMappings)
-    //     {
-    //         KeyCode pcKey = entry.Key;
-    //         PianoKeyController pianoKey = entry.Value;
-
-    //         if (Input.GetKeyDown(pcKey))
-    //         {
-    //             if (!activeNotes.ContainsKey(pcKey)) // prevent re-triggering
-    //             {
-    //                 pianoKey.PressKey();
-
-    //                 MPTKEvent noteOnEvent = new MPTKEvent()
-    //                 {
-    //                     Command = MPTKCommand.NoteOn,
-    //                     Channel = midiChannel,
-    //                     Duration = -1,
-    //                     Value = pianoKey.midiNoteNumber,
-    //                     Velocity = defaultVelocity,
-    //                 };
-    //                 midiStreamPlayer.MPTK_PlayEvent(noteOnEvent);
-    //                 activeNotes.Add(pcKey, noteOnEvent); // store activation state for tracking
-    //                 // Debug.Log($"PC Key: {pcKey} -> Piano Key: {pianoKey.midiNoteNumber} ON")
-    //             }
-    //         }
-    //         else if (Input.GetKeyUp(pcKey))
-    //         {
-    //             if (activeNotes.TryGetValue(pcKey, out MPTKEvent noteToStop))
-    //             {
-    //                 pianoKey.ReleaseKey();
-    //                 midiStreamPlayer.MPTK_StopEvent(noteToStop); // stops specific note event
-    //                 activeNotes.Remove(pcKey);
-    //                 // Debug.Log($"PC Key: {pcKey} -> Piano Key: {pianoKey.midiNoteNumber} OFF")
-    //             }
-    //         }
-    //     }
-    // }
-
-    // void OnDisable()
-    // {
-    //     // Ensure all notes are stopped if this controller is disabled or destroyed
-    //     if (midiStreamPlayer != null && activeNotes != null)
-    //     {
-    //         foreach (MPTKEvent noteEvent in activeNotes.Values)
-    //         {
-    //             midiStreamPlayer.MPTK_StopEvent(noteEvent);
-    //         }
-    //         activeNotes.Clear();
-    //     }
-    // }
 }
