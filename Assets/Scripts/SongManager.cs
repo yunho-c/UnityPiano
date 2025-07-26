@@ -28,6 +28,8 @@ public class SongManager : MonoBehaviour
     [Header("Lane Configuration")]
     [Tooltip("The Y-position where notes will spawn.")]
     public float spawnY = 15;
+    [Tooltip("The Z-position offset for spawning notes.")]
+    public float spawnZOffset = 0f;
     [Tooltip("The Y-position of the 'hit line' where notes should be played.")]
     public float hitLineY = 0f;
     [Tooltip("The Y-position where notes are destroyed if missed.")]
@@ -117,7 +119,7 @@ public class SongManager : MonoBehaviour
     private void SpawnNote(NoteInfo noteInfo)
     {
         // Instantiate prefab at correct height
-        Vector3 spawnPos = new Vector3(0, spawnY, 0); // X will be set by the note itself
+        Vector3 spawnPos = new Vector3(0, spawnY, spawnZOffset); // X will be set by the note itself
         GameObject newNoteObject;
 
         if (visualizationAnchor != null)

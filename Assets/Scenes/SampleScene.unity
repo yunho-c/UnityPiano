@@ -1557,6 +1557,7 @@ MonoBehaviour:
   visualizationAnchor: {fileID: 329849149}
   fallSpeed: 1
   spawnY: 1
+  spawnZOffset: -0.43
   hitLineY: 0.7
   killZoneY: 0.7
   laneStartX: 0
