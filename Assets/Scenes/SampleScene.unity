@@ -1303,7 +1303,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3023253120091480548, guid: ad652ac0a8444b944ac966d7c85eecad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1674985929}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -6952966646969652911, guid: ad652ac0a8444b944ac966d7c85eecad, type: 3}
       insertIndex: -1
@@ -1554,15 +1557,15 @@ MonoBehaviour:
   audioSource: {fileID: 1959671766}
   midiFileName: Songs/Maplestory_El_Nath.mid
   notePrefab: {fileID: 5816078844795424605, guid: 04edf409c440839428db089ea08ce475, type: 3}
-  visualizationAnchor: {fileID: 329849149}
+  visualizationAnchor: {fileID: 1674985929}
   fallSpeed: 1
-  spawnY: 1
-  spawnZOffset: -0.43
+  spawnY: 2
+  spawnZOffset: 0.4
   hitLineY: 0.7
-  killZoneY: 0.7
-  laneStartX: 0
-  laneWidth: 0.01
-  lowestPitch: 48
+  killZoneY: 0.25
+  laneStartX: -0.5
+  laneWidth: 0.014
+  lowestPitch: 24
 --- !u!4 &1268536813
 Transform:
   m_ObjectHideFlags: 0
@@ -1787,6 +1790,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   midiNoteNumber: 46
   actionName: 2Asharp
+--- !u!1 &1674985928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674985929}
+  m_Layer: 0
+  m_Name: NoteBlockAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1674985929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674985928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 329849149}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1692448539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5773200942870476224, guid: ad652ac0a8444b944ac966d7c85eecad, type: 3}
