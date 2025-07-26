@@ -4,6 +4,17 @@ We are incredibly grateful to the talented creators and the open-source communit
 
 ---
 
+## 3D Models
+
+### Electric Piano by [TODO]()
+
+- **Author:** TODO
+- **Source:** TODO
+- **License:** TODO
+- **Notes:** Downloaded via Unity Asset Store
+
+---
+
 ## Environments
 
 ### Animal Crossing Resident Services Interior by [Garu](https://sketchfab.com/Garu.The.Ninja), [sanyabeast](https://sketchfab.com/sanchibbo)
@@ -13,3 +24,14 @@ We are incredibly grateful to the talented creators and the open-source communit
 - **Source:** https://sketchfab.com/3d-models/ac-resident-services-interior-by-garu-6ac98822bf2d4a22840a35008a71d13d
 - **License:** [CC BY 4.0 with required attribution](https://creativecommons.org/licenses/by/4.0/deed.en)
 - **Notes:** Downloaded from Sketfab as `.glb`
+
+---
+
+## Unity Plugins
+
+### Maestro MIDI Player Toolkit by TODO
+
+- **Author:** TODO
+- **Source:** TODO
+- **License:** TODO
+- **Notes:** Downloaded via Unity Asset Store

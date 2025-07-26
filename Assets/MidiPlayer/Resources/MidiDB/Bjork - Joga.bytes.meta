@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6a3be2bcd2017274ebc32aeb35e52445
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 107994
+  packageName: Maestro - Midi Player Tool Kit - Free
+  packageVersion: 2.15.0
+  assetPath: Assets/MidiPlayer/Resources/MidiDB/Bjork - Joga.bytes
+  uploadId: 751844

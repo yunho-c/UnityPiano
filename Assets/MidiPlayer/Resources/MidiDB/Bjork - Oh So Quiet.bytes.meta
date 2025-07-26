@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 82ebcebccea73de4e91f40bd3c080224
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 107994
+  packageName: Maestro - Midi Player Tool Kit - Free
+  packageVersion: 2.15.0
+  assetPath: Assets/MidiPlayer/Resources/MidiDB/Bjork - Oh So Quiet.bytes
+  uploadId: 751844
