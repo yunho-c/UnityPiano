@@ -3,13 +3,14 @@ using Melanchall.DryWetMidi.Interaction;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using MidiPlayerTK;
 
 public class SongManager : MonoBehaviour
 {
   // Configs (set in inspector)
   [Header("Song and Audio")]
-  [Tooltip("The AudioSource component that will play the song.")]
-  public AudioSource audioSource;
+  [Tooltip("The MPTK MidiFilePlayer component that will play the song.")]
+  public MidiFilePlayer midiFilePlayer;
   [Tooltip("The name of the MIDI file in the StreamingAssets folder")]
   public string midiFileName;
 
@@ -33,7 +34,7 @@ public class SongManager : MonoBehaviour
   [Header("Lane Configuration")]
   [Tooltip("The Y-position where notes will spawn.")]
   public float spawnY = 15;
-  [Tooltip("The Z-position offset for spawning notes.")]
+  [Tooltip("The Z-position for spawning notes.")]
   public float spawnZOffset = 0f;
   [Tooltip("The Y-position of the 'hit line' where notes should be played.")]
   public float hitLineY = 0f;
@@ -53,8 +54,16 @@ public class SongManager : MonoBehaviour
 
   void Start()
   {
-    // Ensure AudioSource is assigned
-    if (audioSource == null) audioSource = GetComponent<AudioSource>();
+    // Ensure MidiFilePlayer is assigned
+    if (midiFilePlayer == null) midiFilePlayer = GetComponent<MidiFilePlayer>();
+    if (midiFilePlayer == null)
+    {
+        Debug.LogError("MidiFilePlayer not assigned or not found on the GameObject.");
+        return;
+    }
+
+    // Set the MIDI file to play
+    midiFilePlayer.MPTK_MidiName = Path.GetFileNameWithoutExtension(midiFileName);
 
     // Set a default ease-in curve if one isn't set in the inspector.
     // This curve starts slow and accelerates (y = x^2).
@@ -103,8 +112,8 @@ public class SongManager : MonoBehaviour
   private void StartSong()
   {
     songStartTimeDsp = AudioSettings.dspTime;
-    audioSource.Play();
-    Debug.Log("Song Started");
+    midiFilePlayer.MPTK_Play();
+    Debug.Log("Song Started with MPTK");
   }
 
   void Update()
@@ -175,3 +184,4 @@ public struct NoteInfo
   public double Duration;
   public bool HasBeenSpawned;
 }
+
